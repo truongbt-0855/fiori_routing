@@ -1,0 +1,21 @@
+<mvc:View
+    controllerName="fiori.routing.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true"
+>
+    <Shell>
+        <App id="app">
+            <pages>
+                <Page>
+                    <content>
+                        <Button
+                            text="{i18n>iWantToNavigate}"
+                            class="sapUiTinyMarginEnd"
+                        />
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

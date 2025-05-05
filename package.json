@@ -1,0 +1,22 @@
+{
+  "name": "fiori_routing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "ui5 serve -o index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truongbt-0855/fiori_routing.git"
+  },
+  "author": "TruongBT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/truongbt-0855/fiori_routing/issues"
+  },
+  "homepage": "https://github.com/truongbt-0855/fiori_routing#readme",
+  "devDependencies": {
+    "@ui5/cli": "^4"
+  },
+  "description": ""
+}
