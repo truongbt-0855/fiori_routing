@@ -17,7 +17,7 @@ sap.ui.define([
                 oManifestModel.attachRequestCompleted(() => {
                     let sJsonFilesUrl = sap.ui.require.toUrl(_sJsonFilesPath),
                         oMainDataSource = oManifestModel.getProperty("/sap.app/dataSources/employeeRemote"),
-                        sMetadataUrl = sap.ui.require.toUrl(_sAppPath + oMainDataSource.settings.localUrl);
+                        sMetadataUrl = sap.ui.require.toUrl(_sAppPath + oMainDataSource.settings.localUri);
 
                     // create
                     let oMockServer = new MockServer({
@@ -30,10 +30,10 @@ sap.ui.define([
                         autoRespondAfter: 500
                     });
 
-                    // // simulate
-                    // oMockServer.simulate((sMetadataUrl, {
-                    //     sMockdataBaseUrl: sJsonFilesUrl
-                    // }));
+                    // simulate
+                    oMockServer.simulate(sMetadataUrl, {
+                        sMockdataBaseUrl: sJsonFilesUrl
+                    });
 
                     // start
                     oMockServer.start();
