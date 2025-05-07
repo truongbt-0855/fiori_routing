@@ -1,9 +1,9 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "fiori/routing/controller/BaseController"
+], (BaseController) => {
     "use strict";
 
-    return Controller.extend("fiori.routing.controller.App", {
+    return BaseController.extend("fiori.routing.controller.App", {
         onInit() {
             console.log('Oninit');
             
