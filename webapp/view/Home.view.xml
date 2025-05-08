@@ -15,6 +15,12 @@
                 class="sapUiTinyMarginEnd"
             />
             <Button
+                id="employeeListBtn"
+                text="{i18n>ShowEmployeeList}"
+                press=".onNavToEmployees"
+                class="sapUiTinyMarginEnd"
+            />
+            <Button
                 text="{i18n>iWantToNavigate}"
                 class="sapUiTinyMarginBeginEnd"
             />
