@@ -1,10 +1,10 @@
 <mvc:View
-    controllerName="fiori.routing.controller.App"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    displayBlock="true"
+  controllerName="fiori.routing.controller.App"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  displayBlock="true"
 >
-    <Shell>
-        <App id="app" />
-    </Shell>
+  <Shell>
+    <App id="app" />
+  </Shell>
 </mvc:View>

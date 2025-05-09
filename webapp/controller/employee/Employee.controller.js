@@ -1,6 +1,4 @@
-sap.ui.define([
-    "fiori/routing/controller/BaseController"
-], (BaseController) => {
+sap.ui.define(["fiori/routing/controller/BaseController"], (BaseController) => {
     "use strict";
 
     return BaseController.extend("fiori.routing.controller.employee.Employee", {
@@ -29,29 +27,33 @@ sap.ui.define([
                 events: {
                     change: this._onBindingChange.bind(this),
                     dataRequested: (oEvent) => {
-                        console.log('data request');
-                        
-                        oView.setBusy(true)
+                        console.log("data request");
+
+                        oView.setBusy(true);
                     },
                     dataReceived: (oEvent) => {
-                        console.log('data receive');
-                        oView.setBusy(false)
-                    }
-                }
-            })
+                        console.log("data receive");
+                        oView.setBusy(false);
+                    },
+                },
+            });
         },
 
         _onBindingChange(oEvent) {
             console.log(this.getView());
-            
+
             // No data for the binding
             if (!this.getView().getBindingContext()) {
-                this.getRouter().getTargets().display("notFound");
+                this.getRouter().getTargets().display("notFou23123123123123nd");
             }
         },
 
         onShowResume(oEvent) {
             let oCtx = this.getView().getElementBinding().getBoundContext();
-        }
-    })
-})
+
+            this.getRouter().navTo("employeeResume", {
+                employeeId: oCtx.getProperty("EmployeeID"),
+            });
+        },
+    });
+});
