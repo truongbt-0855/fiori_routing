@@ -26,10 +26,10 @@
             <mvc:XMLView viewName="fiori.routing.view.employee.ResumeProjects" />
           </IconTabFilter>
           <IconTabFilter id="hobbiesTab" text="{i18n>tabHobbies}" key="Hobbies">
-            <Text text="{Hobbies}" />
+            <!-- place content via lazy loading -->
           </IconTabFilter>
           <IconTabFilter id="notesTab" text="{i18n>tabNotes}" key="Notes">
-            <Text text="{Notes}" />
+            <!-- place content via lazy loading -->
           </IconTabFilter>
         </items>
       </IconTabBar>

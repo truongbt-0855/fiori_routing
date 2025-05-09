@@ -131,7 +131,23 @@
                     "name": "employee.Resume",
                     "level": 4,
                     "transition": "flip"
-                }
+                },
+                "resumeTabHobbies": {
+					"id": "resumeHobbies",
+					"parent": "employeeResume",
+					"path": "fiori.routing.view.employee",
+					"name": "ResumeHobbies",
+					"controlId": "hobbiesTab",
+					"controlAggregation": "content"
+				},
+				"resumeTabNotes": {
+					"id": "resumeNotes",
+					"parent": "employeeResume",
+					"path": "fiori.routing.view.employee",
+					"name": "ResumeNotes",
+					"controlId": "notesTab",
+					"controlAggregation": "content"
+				}
             }
         }
     }

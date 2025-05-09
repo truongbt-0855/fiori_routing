@@ -15,10 +15,9 @@ sap.ui.define(
             onNavBack() {
                 let oCtx = this.getView().getBindingContext();
                 console.log(oCtx);
-                
 
                 this.getRouter().navTo('employee', {
-                    employeeId: oCtx.getProperty('EmployeeID')
+                    employeeId: oCtx.getProperty('EmployeeID'),
                 });
             },
 
@@ -43,6 +42,11 @@ sap.ui.define(
                 oQuery = oArgs['?query'];
                 if (oQuery && _aValidTabKeys.indexOf(oQuery.tab) > -1) {
                     oView.getModel('view').setProperty('/selectedTabKey', oQuery.tab);
+                    // support lazy loading for the hobbies and notes tab
+                    if (oQuery.tab === 'Hobbies' || oQuery.tab === 'Notes') {
+                        // the target is either "resumeTabHobbies" or "resumeTabNotes"
+                        this.getRouter().getTargets().display(`resumeTab${oQuery.tab}`);
+                    }
                 } else {
                     // the default query param should be visible at all time
                     this.getRouter().navTo('employeeResume', {
