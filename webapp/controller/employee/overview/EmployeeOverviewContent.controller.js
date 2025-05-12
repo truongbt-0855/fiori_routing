@@ -7,35 +7,52 @@ sap.ui.define(
         'sap/m/ViewSettingsDialog',
         'sap/m/ViewSettingsItem',
     ],
-    function (BaseController, Filter, FilterOperator, Sorter, ViewSettingsDialog, ViewSettingsItem) {
+    (BaseController, Filter, FilterOperator, Sorter, ViewSettingsDialog, ViewSettingsItem) => {
         'use strict';
 
         return BaseController.extend('fiori.routing.controller.employee.overview.EmployeeOverviewContent', {
-            onInit: function () {
+            onInit() {
+                let oRouter = this.getRouter();
+
                 this._oTable = this.byId('employeesTable');
                 this._oVSD = null;
                 this._sSortField = null;
                 this._bSortDescending = false;
                 this._aValidSortFields = ['EmployeeID', 'FirstName', 'LastName'];
                 this._sSearchQuery = null;
+                this._oRouterArgs = null;
 
                 this._initViewSettingsDialog();
+
+                // make the search bookmarkable
+                oRouter.getRoute('employeeOverview').attachMatched(this._onRouteMatched, this);
             },
 
-            onSortButtonPressed: function () {
+            onSortButtonPressed() {
                 this._oVSD.open();
             },
 
-            onSearchEmployeesTable: function (oEvent) {
-                this._applySearchFilter(oEvent.getSource().getValue());
+            onSearchEmployeesTable(oEvent) {
+                var oRouter = this.getRouter();
+                // update the hash with the current search term
+                this._oRouterArgs['?query'].search = oEvent.getSource().getValue();
+                
+                oRouter.navTo('employeeOverview', this._oRouterArgs);
             },
 
-            _initViewSettingsDialog: function () {
-                this._oVSD = new ViewSettingsDialog('vsd', {
-                    confirm: function (oEvent) {
-                        var oSortItem = oEvent.getParameter('sortItem');
-                        this._applySorter(oSortItem.getKey(), oEvent.getParameter('sortDescending'));
-                    }.bind(this),
+            _onRouteMatched(oEvent) {
+                // save the current query state
+                this._oRouterArgs = oEvent.getParameter('arguments');
+                this._oRouterArgs['?query'] = this._oRouterArgs['?query'] || {};
+
+                // search/filter via URL hash
+                this._applySearchFilter(this._oRouterArgs['?query'].search);
+            },
+
+            _initViewSettingsDialog() {
+                this._oVSD = new ViewSettingsDialog('vsd', (oEvent) => {
+                    var oSortItem = oEvent.getParameter('sortItem');
+                    this._applySorter(oSortItem.getKey(), oEvent.getParameter('sortDescending'));
                 });
 
                 // init sorting (with simple sorters as custom data for all fields)
@@ -64,7 +81,7 @@ sap.ui.define(
                 );
             },
 
-            _applySearchFilter: function (sSearchQuery) {
+            _applySearchFilter(sSearchQuery) {
                 var aFilters, oFilter, oBinding;
 
                 // first check if we already have this search value
@@ -95,7 +112,7 @@ sap.ui.define(
              * @param {string} sortDescending	true or false as a string or boolean value to specify a descending sorting
              * @private
              */
-            _applySorter: function (sSortField, sortDescending) {
+            _applySorter(sSortField, sortDescending) {
                 var bSortDescending, oBinding, oSorter;
 
                 // only continue if we have a valid sort field
@@ -130,7 +147,7 @@ sap.ui.define(
                 }
             },
 
-            _syncViewSettingsDialogSorter: function (sSortField, bSortDescending) {
+            _syncViewSettingsDialogSorter(sSortField, bSortDescending) {
                 // the possible keys are: "EmployeeID" | "FirstName" | "LastName"
                 // Note: no input validation is implemented here
                 this._oVSD.setSelectedSortItem(sSortField);
