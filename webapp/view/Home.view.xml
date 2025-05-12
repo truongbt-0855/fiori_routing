@@ -21,8 +21,10 @@
         class="sapUiTinyMarginEnd"
       />
       <Button
-        text="{i18n>iWantToNavigate}"
-        class="sapUiTinyMarginBeginEnd"
+        id="employeeOverviewBtn"
+        text="{i18n>ShowEmployeeOverview}"
+        press=".onNavToEmployeeOverview"
+        class="sapUiTinyMarginEnd"
       />
     </content>
   </Page>

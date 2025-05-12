@@ -5,9 +5,7 @@
         "type": "application",
         "i18n": {
             "bundleUrl": "i18n/i18n.properties",
-            "supportedLocales": [
-                ""
-            ],
+            "supportedLocales": [""],
             "fallbackLocale": ""
         },
         "title": "{{appTitle}}",
@@ -58,9 +56,7 @@
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
                     "bundleName": "fiori.routing.i18n.i18n",
-                    "supportedLocales": [
-                        ""
-                    ],
+                    "supportedLocales": [""],
                     "fallbackLocale": ""
                 }
             },
@@ -92,6 +88,11 @@
                     "pattern": "employees",
                     "name": "employeeList",
                     "target": "employees"
+                },
+                {
+                    "pattern": "employees/overview",
+                    "name": "employeeOverview",
+                    "target": ["employeeOverviewTop", "employeeOverviewContent"]
                 },
                 {
                     "pattern": "employees/{employeeId}",
@@ -133,21 +134,43 @@
                     "transition": "flip"
                 },
                 "resumeTabHobbies": {
-					"id": "resumeHobbies",
-					"parent": "employeeResume",
-					"path": "fiori.routing.view.employee",
-					"name": "ResumeHobbies",
-					"controlId": "hobbiesTab",
-					"controlAggregation": "content"
-				},
-				"resumeTabNotes": {
-					"id": "resumeNotes",
-					"parent": "employeeResume",
-					"path": "fiori.routing.view.employee",
-					"name": "ResumeNotes",
-					"controlId": "notesTab",
-					"controlAggregation": "content"
-				}
+                    "id": "resumeHobbies",
+                    "parent": "employeeResume",
+                    "path": "fiori.routing.view.employee",
+                    "name": "ResumeHobbies",
+                    "controlId": "hobbiesTab",
+                    "controlAggregation": "content"
+                },
+                "resumeTabNotes": {
+                    "id": "resumeNotes",
+                    "parent": "employeeResume",
+                    "path": "fiori.routing.view.employee",
+                    "name": "ResumeNotes",
+                    "controlId": "notesTab",
+                    "controlAggregation": "content"
+                },
+                "employeeOverview": {
+                    "id": "employeeOverview",
+                    "path": "fiori.routing.view.employee.overview",
+                    "name": "EmployeeOverview",
+                    "level": 2
+                },
+                "employeeOverviewTop": {
+                    "id": "employeeOverviewTop",
+                    "parent": "employeeOverview",
+                    "path": "fiori.routing.view.employee.overview",
+                    "name": "EmployeeOverviewTop",
+                    "controlId": "EmployeeOverviewParent",
+                    "controlAggregation": "content"
+                },
+                "employeeOverviewContent": {
+                    "id": "employeeOverviewContent",
+                    "parent": "employeeOverview",
+                    "path": "fiori.routing.view.employee.overview",
+                    "name": "EmployeeOverviewContent",
+                    "controlId": "EmployeeOverviewParent",
+                    "controlAggregation": "content"
+                }
             }
         }
     }
