@@ -44,7 +44,7 @@ sap.ui.define(["fiori/routing/controller/BaseController"], (BaseController) => {
 
             // No data for the binding
             if (!this.getView().getBindingContext()) {
-                this.getRouter().getTargets().display("notFou23123123123123nd");
+                this.getRouter().getTargets().display("notFound");
             }
         },
 
