@@ -120,6 +120,7 @@
                     "id": "employeeList",
                     "path": "fiori.routing.view.employee",
                     "name": "EmployeeList",
+                    "title": "List Employee ne",
                     "level": 2
                 },
                 "employee": {
@@ -131,6 +132,7 @@
                     "id": "resume",
                     "name": "employee.Resume",
                     "level": 4,
+                    "title": "List Employee ne",
                     "transition": "flip"
                 },
                 "resumeTabHobbies": {

@@ -16,7 +16,8 @@
   },
   "homepage": "https://github.com/truongbt-0855/fiori_routing#readme",
   "devDependencies": {
-    "@ui5/cli": "^4"
+    "@ui5/cli": "^4",
+    "@ui5/linter": "^1.13.1"
   },
   "description": ""
 }
