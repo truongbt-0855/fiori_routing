@@ -1,2 +1,6 @@
 node_modules
 .history
+dist
+mta_archives
+mta
+resources

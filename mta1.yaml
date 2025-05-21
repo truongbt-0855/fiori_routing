@@ -1,0 +1,27 @@
+ID: fiori_routing
+_schema-version: "3.2"
+version: 1.0.0
+modules:
+  - name: fiori_routing-ui-deployer
+    type: html5
+    path: .
+    build-parameters:
+      build-result: dist
+      supported-platforms: []
+    parameters:
+      app-name: fiori_routing
+resources:
+  - name: fiori_routing-html5-repo
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: fiori_routing-html5-repo
+  - name: fiori_routing-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-name: fiori_routing-xsuaa-srv
+      service-plan: application
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true

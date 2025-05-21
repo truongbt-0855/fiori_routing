@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "ui5 serve -o index.html"
+    "start": "ui5 serve -o index.html",
+    "deploy": "fiori cfDeploy --version-rule ALL",
+    "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
+    "deploy-config": "fiori add deploy-config",
+    "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateCachebusterInfo",
+    "build:mta": "rimraf resources mta_archives && mbt build"
   },
   "repository": {
     "type": "git",
@@ -19,5 +24,10 @@
     "@ui5/cli": "^4",
     "@ui5/linter": "^1.13.1"
   },
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@sap/ui5-builder-webide-extension": "^1.1.9",
+    "@sap/ux-ui5-tooling": "^1.17.5",
+    "ui5-task-zipper": "^3.4.1"
+  }
 }
