@@ -175,5 +175,9 @@
                 }
             }
         }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "fiori_routing"
     }
 }
