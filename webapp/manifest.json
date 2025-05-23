@@ -13,6 +13,17 @@
         "applicationVersion": {
             "version": "1.0.0"
         },
+        "crossNavigation": {
+            "inbounds": {
+                "fiorirouting-display": {
+                    "semanticObject": "FioriRouting",
+                    "action": "display",
+                    "title": "Fiori Routing App",
+                    "subTitle": "Manage Routing",
+                    "icon": "sap-icon://action"
+                }
+            }
+        },
         "dataSources": {
             "employeeRemote": {
                 "uri": "/here/goes/your/serviceUrl/",
