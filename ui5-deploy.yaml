@@ -1,23 +1,36 @@
-specVersion: '2.4'
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
 metadata:
-  name: fiori_routing
+  name: ui5.navigation
 type: application
-resources:
-  configuration:
-    propertiesFileSourceEncoding: UTF-8
+framework:
+  name: OpenUI5
+  version: "1.135.0" #MainVersion#
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: themelib_sap_horizon
 builder:
   resources:
     excludes:
-      - "/test/**"
+      - /test/**
+      - /localService/**
   customTasks:
-  - name: webide-extension-task-updateManifestJson
-    afterTask: replaceVersion
-    configuration:
-      appFolder: webapp
-      destDir: dist
-  - name: ui5-task-zipper
-    afterTask: generateCachebusterInfo
-    configuration:
-      archiveName: fiorirouting
-      additionalFiles:
-      - xs-app.json
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        verbose: true
+        strictSsl: false
+        credentials: 
+          username: env:FIORI_TOOLS_USER
+          password: env:FIORI_TOOLS_PASSWORD
+        target:
+          url: https://15.235.212.114:44300
+          client: 100
+        app:
+          name: ZZ1_FIORI_ROUTI
+          package: $TMP
+          transport: ''
+        exclude:
+          - /test/

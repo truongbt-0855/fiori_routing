@@ -4,11 +4,13 @@
   "main": "index.js",
   "scripts": {
     "start": "ui5 serve -o index.html",
-    "deploy": "fiori cfDeploy --version-rule ALL",
+    "deploy": "npm run build && fiori deploy --config ui5-deploy.yaml && rimraf archive.zip",
     "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
     "deploy-config": "fiori add deploy-config",
     "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateCachebusterInfo",
-    "build:mta": "rimraf resources mta_archives && mbt build"
+    "build:mta": "rimraf resources mta_archives && mbt build",
+    "undeploy": "npm run build && fiori undeploy --config ui5-deploy.yaml",
+    "deploy-test": "npm run build && fiori deploy --config ui5-deploy.yaml --testMode true"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,9 @@
   "homepage": "https://github.com/truongbt-0855/fiori_routing#readme",
   "devDependencies": {
     "@ui5/cli": "^4",
-    "@ui5/linter": "^1.13.1"
+    "@ui5/linter": "^1.13.1",
+    "dotenv": "^16.5.0",
+    "rimraf": "^5.0.5"
   },
   "description": "",
   "dependencies": {
